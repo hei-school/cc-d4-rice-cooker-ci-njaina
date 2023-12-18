@@ -1,4 +1,4 @@
-import readlineSync from './ReadlineImpl.js';
+import readlineSync from './ReadlineImpl.mjs';
 
 function createPrompt() {
   return async function promptSync(question) {
