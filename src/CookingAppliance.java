@@ -69,4 +69,14 @@ public abstract class CookingAppliance {
     public abstract void plugIn();
 
     public abstract void stop();
+
+    public static boolean getBooleanInput(Scanner scanner) {
+        System.out.println("Enter true or false: ");
+        return scanner.nextBoolean();
+    }
+
+    public static int getIntInput(Scanner scanner, String message) {
+        System.out.println(message);
+        return scanner.nextInt();
+    }
 }

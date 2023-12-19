@@ -1,4 +1,12 @@
+import java.util.Scanner;
+
 public class Ricecooker extends CookingAppliance {
+    private Scanner scanner;
+
+    public Ricecooker() {
+        this.scanner = new Scanner(System.in);
+    }
+
     @Override
     public void plugIn() {
         System.out.println("Plugging in the rice cooker...");
@@ -9,10 +17,7 @@ public class Ricecooker extends CookingAppliance {
         System.out.println("Stopping...");
     }
 
-    public static void main(String[] args) {
-        Ricecooker ricecooker = new Ricecooker();
-        Scanner scanner = new Scanner(System.in);
-
+    public void showOptions() {
         boolean continueChoosing = true;
 
         while (continueChoosing) {
@@ -27,33 +32,34 @@ public class Ricecooker extends CookingAppliance {
             System.out.println("8. Stop");
 
             int numericChoice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
 
             switch (numericChoice) {
                 case 1:
-                    ricecooker.startCooking();
+                    startCooking();
                     break;
                 case 2:
-                    ricecooker.endCooking();
+                    endCooking();
                     break;
                 case 3:
                     System.out.println("Enter the timer value (in minutes): ");
                     int timerValue = scanner.nextInt();
-                    ricecooker.setTimer(timerValue);
+                    setTimer(timerValue);
                     break;
                 case 4:
-                    ricecooker.steamCook();
+                    steamCook();
                     break;
                 case 5:
-                    ricecooker.interruptCooking();
+                    interruptCooking();
                     break;
                 case 6:
-                    ricecooker.cleanInnerBowl();
+                    cleanInnerBowl();
                     break;
                 case 7:
-                    ricecooker.plugIn();
+                    plugIn();
                     break;
                 case 8:
-                    ricecooker.stop();
+                    stop();
                     continueChoosing = false;
                     break;
                 default:
@@ -61,10 +67,13 @@ public class Ricecooker extends CookingAppliance {
             }
 
             System.out.println("Do you want to choose another option? (y/n): ");
-            String continueChoice = scanner.next().toLowerCase();
+            String continueChoice = scanner.nextLine().toLowerCase();
             continueChoosing = continueChoice.equals("y");
         }
+    }
 
-        scanner.close();
+    public static void main(String[] args) {
+        Ricecooker ricecooker = new Ricecooker();
+        ricecooker.showOptions();
     }
 }
